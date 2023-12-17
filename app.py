@@ -29,7 +29,7 @@ def get_gifs():
         #used requests library for get post http request
         fetch = requests.get(endpoint)
 
-        # Extract preview GIFs from the response
+        # Create dict, looping through the gif result.
         preview_gifs = [{'id': each.get('id'), 'title': each.get('title'), 'gif': each.get('media_formats').get('gif').get('url')} for each in fetch.json().get('results')]
         
         # Return JSON response
