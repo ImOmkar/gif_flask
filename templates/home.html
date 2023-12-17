@@ -19,26 +19,27 @@
             <button id="search-button" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm p-2 dark:bg-gray-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search GIFs!</button>
         </div>
 
+        <div class="max-h-[800px] overflow-auto">
+            <div id="gifs-container" class=" relative"></div>
 
-        <div id="gifs-container" class=" relative"></div>
+            <!-- Separate image element for previewing the selected image -->
+            <img id="image-preview" alt="Image Preview" style="display: none;">
 
-        <!-- Separate image element for previewing the selected image -->
-        <img id="image-preview" alt="Image Preview" style="display: none;">
+            <form id="upload-form" method="post" action="{{ url_for('get_data') }}" enctype="multipart/form-data">
+                <!-- Hidden input for storing the selected GIF URL -->
+                <input type="hidden" id="selected-gif-url" name="selected_gif_url" value="">
+                <button id="uploadButton" class="hidden flex items-center border rounded-3xl my-2 gap-2 p-4 text-2xl text-white" type="submit" value="Upload">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <polyline points="16 16 12 12 8 16" />
+                        <line x1="12" x2="12" y1="12" y2="21" />
+                        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
+                        <polyline points="16 16 12 12 8 16" />
+                    </svg>
 
-        <form id="upload-form" method="post" action="{{ url_for('get_data') }}" enctype="multipart/form-data">
-            <!-- Hidden input for storing the selected GIF URL -->
-            <input type="hidden" id="selected-gif-url" name="selected_gif_url" value="">
-            <button id="uploadButton" class="hidden flex items-center border rounded-3xl my-2 gap-2 p-4 text-2xl text-white" type="submit" value="Upload">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    <polyline points="16 16 12 12 8 16" />
-                    <line x1="12" x2="12" y1="12" y2="21" />
-                    <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
-                    <polyline points="16 16 12 12 8 16" />
-                </svg>
-
-                <span>Upload</span>
-            </button>
-        </form>
+                    <span>Upload</span>
+                </button>
+            </form>
+        </div>
     </div>
 
     <script>
